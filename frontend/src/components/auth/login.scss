@@ -1,0 +1,43 @@
+body {
+    //background-image: linear-gradient(90deg, rgb(12, 237, 147),#7451f8) !important;
+    background :#818181 !important;
+}
+
+.form {
+    width: 400px;
+    padding: 20px;
+    background:#7451f8;
+    color:#fff;
+    border-radius:10px;
+    -webkit-box-shadow: 2px 4px 10px 2px rgba(0,0,0,0.47);
+    box-shadow: 2px 4px 10px 2px rgba(201,201,201,0.47);
+    
+
+    h1 {
+        font-size:30px;
+    }
+
+    input {
+        width:329px;
+        border: 1px solid #7451f8;
+        background:#fff;
+    }
+
+    .btns {
+        width:100%;
+        display:flex;
+        justify-content:space-between;
+        margin-top:20px;
+        button {
+            color:#fff;
+            border: 1px solid #fff;
+        }
+    }
+}
+
+.formHolder {
+    height:100vh;
+       display:flex;
+        align-items: center;
+        justify-content: center;
+}

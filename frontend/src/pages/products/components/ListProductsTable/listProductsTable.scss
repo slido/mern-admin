@@ -1,0 +1,63 @@
+.table {
+    td,th {
+        cursor: pointer;
+        &:hover {
+            text-decoration:underline
+        }
+    }
+
+    .thclr {
+        background-color: #ded4ff;
+        //background-image: linear-gradient(90deg, rgb(166, 216, 196),#c4b9ed);
+     
+        .tableCell {
+            color:rgb(79, 78, 78);
+            font-size:16px;
+        }
+    }
+    
+    .cellWrapper {
+        display: flex;
+        align-items: center;
+        width:20%;
+        .image {
+            width:32px;
+            height:32px;
+            border-radius: 50%;
+            margin-right:10px;
+            object-fit: cover;
+        }
+    }
+    .status {
+        padding: 5px;
+        border-radius:5px;
+
+        &.awailable {
+            color:green;
+            background-color: rgba(0,1218,0,0.151);
+            border:1px solid green;
+        }
+
+        &.ariving {
+            color:goldenrod;
+            background-color: rgba(189,189,3,0.103);
+            border:1px solid goldenrod;
+        }
+        &.notAwailable {
+            color:crimson;
+            background-color: rgba(141, 27, 72, 0.103);
+            border:1px solid crimson;
+        }
+    }
+
+    .cellAction {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 15px;
+        svg {
+            color:#7451f8;
+        }
+        
+    }
+}

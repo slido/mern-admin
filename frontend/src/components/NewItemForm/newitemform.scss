@@ -1,0 +1,82 @@
+.newUserForm {
+    width:100%;
+
+    .top{
+      
+        padding:10px;
+        margin:20px;
+        display:flex;
+        h1 {
+            font-size: 30px;
+            font-weight:bold;
+            color:#7451f8;
+        }
+    }
+    .bottom {
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
+        box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+        padding:30px;
+        margin:20px;
+        display:flex;
+
+        h1 {
+            font-size: 30px;
+        }
+
+        .left {
+            flex:1;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            display: flex;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            border-radius:50%;
+            object-fit: cover;
+        }
+        .right {
+            flex:2;
+            padding:20px;
+
+            form {
+                display: flex;
+                flex-wrap: wrap;
+                gap:30px;
+                justify-content: space-around;
+
+                .formInput {
+                    width: 40%;
+
+                    label {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                    }
+                    input{
+                        width:100%;
+                        padding:10px;
+                        border: 0.7px solid rgb(136, 136, 136);
+                        border-radius:5px;
+                    }
+                }
+
+                button {
+                    width:100%;
+                    padding:10px;
+                    border:none;
+                    //background-color: #7451f8;
+                    color:#fff;
+                    font-weight: bold;
+                    cursor: pointer;
+                    font-size:18px;
+                    margin: 10px 30px 15px 30px;
+                    text-transform: uppercase;
+                    background-image: linear-gradient(90deg, rgb(12, 237, 147),#7451f8);
+                }
+            }
+        }
+    }
+}
