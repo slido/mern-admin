@@ -13,3 +13,4 @@ const config = process.env.NODE_ENV === 'development'
 	: prod;
   
 export default config;
+
