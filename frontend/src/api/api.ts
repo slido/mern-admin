@@ -18,7 +18,7 @@ export const authApi: AxiosInstance = axios.create({
 });
 
 api.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  (config: AxiosRequestConfig) =>  {
     const token = JSON.parse(localStorage.getItem("token") as string);
     if (config && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -30,7 +30,6 @@ api.interceptors.request.use(
 );
 
 api.interceptors.response.use(
-  
   (response: AxiosResponse) => response,
   error => {
     if (error.response.status === 401) {
