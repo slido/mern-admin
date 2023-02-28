@@ -1,6 +1,6 @@
 const dev = {
-	baseURL: "http://localhost:5000/api/",
-	landingPageUrl: "http://localhost:5000",
+	baseURL: "/api/",
+	landingPageUrl: "http://dkoletic.com",
 };
   
 const prod = {
