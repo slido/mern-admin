@@ -15,14 +15,14 @@ db.mongoose
   })
   .then(() => {
     console.log("Successfully connect to MongoDB.");
-    initial();
+    initial;
   })
   .catch(err => {
     console.error("Connection error", err);
     process.exit();
   });
 
-function initial() {
+const initial = () => {
 	User.estimatedDocumentCount((err, count) => {
 	  if (!err && count === 0) {
 		new User({

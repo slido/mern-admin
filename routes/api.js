@@ -17,7 +17,7 @@ app.use("/", apiLimiter);
 app.use('/auth', require('./auth'))
 
 // Everything after this requires user authentication
-//app.use('/', authJwt.verifyToken);
+app.use('/', authJwt.verifyToken);
 
 // Already signed up user routes
 app.use('/user', require('./user'))
@@ -25,9 +25,5 @@ app.use('/products', require('./products'))
 
 // Using AI Platform
 app.use('/ai', require('./ai'))
-
-app.get("/test", (req,res) => {
-	res.json("hello world")
-})
 
 module.exports = app

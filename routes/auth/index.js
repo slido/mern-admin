@@ -66,9 +66,6 @@ const checkDuplicateUsernameOrEmail = async (req, res, next) => {
 /////REGISTER USER
 
 const signup = async (req, res) => {
-
-	//console.log(`referrerObj`,referrerObj)
-  
 	const user = new User({
 	  email: req.body.email,
 	  fname: req.body.fname,
@@ -125,7 +122,7 @@ const signin = (req, res) => {
 		);
   
 		if (!passwordIsValid) {
-		  return res.status(401).send({
+		  return res.status(401).send({    
 			token: null,
 			message: "Invalid Password!"
 		  });
@@ -145,8 +142,8 @@ const signin = (req, res) => {
 		let profile = {
 			...user.toObject()
 		}
-		delete profile.password
-	
+		  delete profile.password
+
 		res.status(200).json({
 		  token,
 		  profile

@@ -39,7 +39,6 @@ const isAdmin = (req, res, next) => {
 
 
 const authJwt = {
-	// createJwtToken,
 	verifyToken,
 	isAdmin,
 };
