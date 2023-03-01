@@ -23,7 +23,6 @@ const EditProduct: FC = () => {
   }, [singleProduct]);
 
   const handleSubmit = (e: Product) => {
-    console.log(e);
     let data = {
       title: e.title,
       description: e.description,

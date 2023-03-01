@@ -63,9 +63,9 @@ const obj = {
 				required: true,
 				error: "",
 				example: `function HelloWorld(text){ 
-	let text || "Hello World"; 
-	console.log(text);
-}`,
+							let text || "Hello World"; 
+							console.log(text);
+						}`,
 			},
 		],
 		example: {

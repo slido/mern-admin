@@ -5,12 +5,13 @@ const path = require("path");
 const logger = require("morgan");
 const cors = require("cors");
 require('./routes/middlewares/mongo');
+require('dotenv').config();
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-app.set('jwt', "ebeb1a5ada5cf38bfc2b49ed5b3100e0");
-
+app.set('jwt', process.env.JWT_SECRET);
+console.log(process.env.JWT_SECRET)
 app.use('/api', require('./routes/api'))
 app.use(express.static(path.join(__dirname, "./frontend/build")));
 

@@ -7,7 +7,6 @@ let app = express.Router()
 app.post('/example', async (req, res, next) => {
 	try {
 		let { content } = req.body
-  console.log(content)
 	let prompt = `This is a Chatbot that Answer questions from a user:\n`
 
 	let inputRaw = `${content}` // here is where people enter stuff

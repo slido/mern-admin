@@ -20,6 +20,7 @@ export const authApi: AxiosInstance = axios.create({
 api.interceptors.request.use(
   (config: AxiosRequestConfig) =>  {
     const token = JSON.parse(localStorage.getItem("token") as string);
+    
     if (config && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
       config.headers["x-access-token"] = token;

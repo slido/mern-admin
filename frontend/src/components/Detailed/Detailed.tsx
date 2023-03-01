@@ -18,7 +18,6 @@ const Detailed: FC = () => {
 
   useEffect(() => {
     dispatch(getProductById(id!));
-    console.log(product);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, dispatch]);
 

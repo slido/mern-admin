@@ -41,7 +41,6 @@ const JobAd: FC = () => {
             validationSchema={validationSchema}
             onSubmit={(values: FormValues) => {
               const url = "/ai/business/jobad";
-              console.log("waaat");
               const postData = {
                 title: values.inputTitle,
                 salary: values.inputSalary,

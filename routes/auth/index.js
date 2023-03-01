@@ -135,7 +135,7 @@ const signin = (req, res) => {
 		  accountType: user.accountType
 		}
   
-		var token = jwt.sign(userToken, "ebeb1a5ada5cf38bfc2b49ed5b3100e0", {
+		var token = jwt.sign(userToken, req.app.get('jwt'), {
 		  expiresIn: 86400 // 24 hours
 		});
   
