@@ -6,7 +6,7 @@ export const api: AxiosInstance = axios.create({
     accept: "application/json",
     "Content-Type": "application/json",
   },
-});
+});  
 
 // Create a new instance for login and registration requests
 export const authApi: AxiosInstance = axios.create({
