@@ -5,8 +5,6 @@ import {
   Routes,
   Route,
   Navigate,
-  useNavigate,
-  useLocation,
 } from "react-router-dom";
 import mainTheme from "./theme/customTheme";
 import "./theme/mainTheme.css";
@@ -16,24 +14,28 @@ import Register from "./components/auth/Register";
 import Layout from "./components/Layout/Layout";
 import ListProducts from "./pages/products/ListProducts";
 import Detailed from "./components/Detailed/Detailed";
-import NewItemForm from "./components/NewItemForm/NewItemForm";
-import { productInputs, userInputs } from "./utils/formsDataSource";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import "./App.scss";
 import GenerateBlogPost from "./pages/generateBlogPost/GenerateBlogPost";
 import { useAppDispatch } from "./state/store";
-import { getUser } from "./components/auth/AuthSlice";
+import { getUser, logoutUser } from "./components/auth/AuthSlice";
 import SnackBar from "./components/SnackBar/SnackBar";
 import CreateProduct from "./pages/products/components/Create";
 import EditProduct from "./pages/products/components/Edit";
 import Ask from "./pages/ask/Ask";
 import JobAd from "./pages/jobAd/JobAd";
+
 const App: FC = () => {
   const dispatch = useAppDispatch();
 
   const initApp = useCallback(async () => {
     await dispatch(getUser());
   }, [dispatch]);
+
+  const Logout = () => {
+    dispatch(logoutUser());
+    return <Navigate to="/login" />;
+  };
 
   useEffect(() => {
     initApp();
@@ -61,7 +63,7 @@ const App: FC = () => {
               </Route>
             </Route>
             <Route path="/login" element={<LoginForm />} />
-            <Route path="/logout" element={<Navigate to="/login" />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />
             <Route path="*" element={<Navigate to="/login" />} />
           </Routes>

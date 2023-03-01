@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.set('jwt', process.env.JWT_SECRET);
 
-app.use('/api', require('./routes/api'))
+app.use('/api', require('./routes/api'));
 app.use(express.static(path.join(__dirname, "./frontend/build")));
 
 app.get("*", function (_, res) {
