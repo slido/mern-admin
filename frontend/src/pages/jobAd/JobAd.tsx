@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { post } from "../../api/api";
 import "./jobAd.scss";
+
 interface FormValues {
   inputTitle: string;
   inputSalary: string;

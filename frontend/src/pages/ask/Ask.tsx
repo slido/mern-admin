@@ -1,9 +1,10 @@
-import React, { ReactElement, FC, useState } from "react";
-import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import { FC, useState } from "react";
+import { Button, TextField } from "@mui/material";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { post } from "../../api/api";
 import "./ask.scss";
+
 interface FormValues {
   inputData: string;
 }
