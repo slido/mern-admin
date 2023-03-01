@@ -5,7 +5,7 @@ import StoreIcon from "@mui/icons-material/Store";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { logoutUser } from "../auth/AuthSlice";
 import { useAppDispatch } from "../../state/store";
 
@@ -24,45 +24,66 @@ const Sidebar = () => {
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
-          <Link to="/" style={{ textDecoration: "none" }}>
+
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             <li>
               <Dashboard />
               <span>Dashboard</span>
             </li>
-          </Link>
+          </NavLink>
           <p className="title">LISTS</p>
 
-          <Link to="/products" style={{ textDecoration: "none" }}>
+          <NavLink
+            to="/products"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             <li>
               <StoreIcon />
               <span>Products</span>
             </li>
-          </Link>
+          </NavLink>
 
           <p className="title">SERVICE</p>
-          <Link to="/blog" style={{ textDecoration: "none" }}>
+          <NavLink
+            to="/blog"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             <li>
               <CreditCardIcon />
               <span>Blog Post</span>
             </li>
-          </Link>
-          <Link to="/ask" style={{ textDecoration: "none" }}>
+          </NavLink>
+          <NavLink
+            to="/ask"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             <li>
               <CreditCardIcon />
               <span>Ask a question</span>
             </li>
-          </Link>
-          <Link to="/jobad" style={{ textDecoration: "none" }}>
+          </NavLink>
+          <NavLink
+            to="/jobad"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             <li>
               <CreditCardIcon />
               <span>Job Ad</span>
             </li>
-          </Link>
+          </NavLink>
           <p className="title">USER</p>
-          <li>
-            <AccountCircleIcon />
-            <span>Profile</span>
-          </li>
+          <NavLink
+            to="/profile"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            <li>
+              <AccountCircleIcon />
+              <span>Profile</span>
+            </li>
+          </NavLink>
           <li onClick={handleLogout}>
             <ExitToAppIcon />
             <span>Logout</span>

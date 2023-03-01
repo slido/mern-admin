@@ -1,4 +1,4 @@
-export const itemFromStorage = (item:any) => localStorage.getItem(item)
+export const itemFromStorage = (item:string) => localStorage.getItem(item)
   ? JSON.parse(localStorage.getItem(item)!)
     : null;
   
