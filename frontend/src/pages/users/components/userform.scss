@@ -1,0 +1,80 @@
+.newProductForm {
+    width:100%;
+    color:#888;
+    font-weight:500;
+
+    .dataTableTitle {
+        display:flex;
+        justify-content: space-between;
+        width:100%;
+
+        button {
+            width:20%;
+            border:none;
+            color:#fff;
+            cursor: pointer;
+            font-size:18px;
+            background-image: linear-gradient(90deg, rgb(12, 237, 147),#7451f8);
+        }
+           
+    }
+
+
+    h1 {
+        font-size: 30px;
+        font-weight:bold;
+        color:#7451f8;
+    }
+    .top {
+        padding:30px 30px 10px 30px;
+        display:flex;
+    }
+    .bottom {
+        gap: 20px;
+        display: flex;
+        padding:20px;
+        align-items: flex-start;
+        
+        .left {
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex:2;
+            display: flex;
+            border-radius:10px;
+            flex-direction: column;
+            border-radius: 10px;
+            -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
+            box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+            padding:20px;
+
+           
+
+            .fItem {
+                width:100%;
+                margin-bottom:20px;
+            }
+    
+            button {
+                width:40%;
+                padding:10px;
+                border:none;
+                //background-color: #7451f8;
+                color:#fff;
+                font-weight: bold;
+                cursor: pointer;
+                font-size:18px;
+                background-image: linear-gradient(90deg, rgb(12, 237, 147),#7451f8);
+            }
+        }
+
+        .right {
+            flex:2;
+            border-radius: 10px;
+            -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
+            box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+            padding:20px;
+        }
+      
+        
+    }
+}

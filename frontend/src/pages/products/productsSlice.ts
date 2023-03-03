@@ -96,7 +96,6 @@ export const productSlice = createSlice({
     reducers: {
         setProducts: (state, action: PayloadAction<Product[]>) => {
             state.products = action.payload
-            console.log("reducers:",state.products)
         }
     },
     extraReducers: (builder) =>

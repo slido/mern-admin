@@ -45,6 +45,15 @@ const Sidebar = () => {
               <span>Products</span>
             </li>
           </NavLink>
+          <NavLink
+            to="/users"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            <li>
+              <AccountCircleIcon />
+              <span>Users</span>
+            </li>
+          </NavLink>
 
           <p className="title">SERVICE</p>
           <NavLink

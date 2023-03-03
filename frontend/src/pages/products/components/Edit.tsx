@@ -14,7 +14,6 @@ const EditProduct: FC = () => {
 
   useEffect(() => {
     dispatch(getProductById(id!));
-    console.log(product);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, dispatch]);
 
@@ -40,7 +39,13 @@ const EditProduct: FC = () => {
     navigate("/products");
   };
 
-  return <ProductForm onSubmit={handleSubmit} initialValues={product} />;
+  return (
+    <ProductForm
+      onSubmit={handleSubmit}
+      initialValues={product}
+      isEdit={true}
+    />
+  );
 };
 
 export default EditProduct;

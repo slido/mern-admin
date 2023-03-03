@@ -1,0 +1,36 @@
+.userListContainer {
+    margin:20px;
+
+    .dataTableTitle {
+        display:flex;
+        justify-content: space-between;
+        margin-bottom:10px;
+
+        a {
+            margin-top: 15px;
+
+            button {
+                width:100%;
+                border:none;
+                color:#fff;
+                cursor: pointer;
+                font-size:18px;
+                background-image: linear-gradient(90deg, rgb(12, 237, 147),#7451f8);
+            }
+        }
+    }
+
+    .listTitle {
+        font-size: 30px;
+        font-weight: bold;
+        color: #7451f8;
+        padding:10px 20px 20px 20px;
+    }
+
+    .listElement {
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+    border-radius:10px;
+    padding: 20px;;
+    }
+}

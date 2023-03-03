@@ -57,7 +57,6 @@ const RegisterForm: FC = () => {
       validateOnChange={true}
       onSubmit={async (values: RegisterFormValues, actions) => {
         submitForm(values);
-        console.log(JSON.stringify(values, null, 2));
         //actions.resetForm();
       }}
     >

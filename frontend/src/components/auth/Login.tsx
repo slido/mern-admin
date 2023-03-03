@@ -63,13 +63,7 @@ const LoginForm: FC = () => {
           handleBlur,
           isSubmitting,
         }) => (
-          <Form
-            className="formHolder"
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSubmit();
-            }}
-          >
+          <Form className="formHolder">
             <div className="form">
               <h1>Login</h1>
               <Field

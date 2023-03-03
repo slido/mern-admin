@@ -15,9 +15,14 @@ import "./productform.scss";
 interface IProductFormPrompts {
   initialValues: Product;
   onSubmit: (values: Product) => void;
+  isEdit: boolean;
 }
 
-const ProductForm: FC<IProductFormPrompts> = ({ initialValues, onSubmit }) => {
+const ProductForm: FC<IProductFormPrompts> = ({
+  initialValues,
+  onSubmit,
+  isEdit,
+}) => {
   const [selectedProduct, setSelectedproduct] =
     useState<Product>(initialValues);
   const { loading } = useAppSelector((state) => state.products);
@@ -36,7 +41,7 @@ const ProductForm: FC<IProductFormPrompts> = ({ initialValues, onSubmit }) => {
       <div className="top">
         <div className="dataTableTitle">
           <h1 className="listTitle">
-            {selectedProduct?.title ? "Edit Product" : "Create Product"}
+            {isEdit ? "Edit Product" : "Create Product"}
           </h1>
 
           <Button
@@ -112,7 +117,7 @@ const ProductForm: FC<IProductFormPrompts> = ({ initialValues, onSubmit }) => {
                   disableElevation
                   onClick={handleSubmit}
                 >
-                  {selectedProduct?.title ? "Save" : "Create"}
+                  {isEdit ? "Save" : "Create"}
                 </Button>
               </FormControl>
             </form>

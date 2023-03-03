@@ -14,7 +14,6 @@ const CreateProduct: FC = () => {
       description: e.description,
       status: e.status,
     };
-    console.log(data);
     dispatch(createProduct(data));
     navigate("/products");
   };
@@ -26,7 +25,13 @@ const CreateProduct: FC = () => {
     categories: [],
   });
 
-  return <ProductForm onSubmit={handleSubmit} initialValues={product} />;
+  return (
+    <ProductForm
+      onSubmit={handleSubmit}
+      initialValues={product}
+      isEdit={false}
+    />
+  );
 };
 
 export default CreateProduct;

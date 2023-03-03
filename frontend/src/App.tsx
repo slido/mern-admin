@@ -13,7 +13,6 @@ import LoginForm from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Layout from "./components/Layout/Layout";
 import ListProducts from "./pages/products/ListProducts";
-import Detailed from "./components/Detailed/Detailed";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import "./App.scss";
 import GenerateBlogPost from "./pages/generateBlogPost/GenerateBlogPost";
@@ -24,6 +23,11 @@ import CreateProduct from "./pages/products/components/Create";
 import EditProduct from "./pages/products/components/Edit";
 import Ask from "./pages/ask/Ask";
 import JobAd from "./pages/jobAd/JobAd";
+import ListUsers from "./pages/users/ListUsers";
+import CreateUser from "./pages/users/components/Create";
+import EditUser from "./pages/users/components/Edit";
+import ProductDetailed from "./pages/products/components/ProductDetailed/ProductDetailed";
+import UserDetailed from "./pages/users/components/UserDetailed/UserDetailed";
 
 const App: FC = () => {
   const dispatch = useAppDispatch();
@@ -53,9 +57,15 @@ const App: FC = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="products">
                   <Route index element={<ListProducts />} />
-                  <Route path=":id" element={<Detailed />} />
+                  <Route path=":id" element={<ProductDetailed />} />
                   <Route path="new" element={<CreateProduct />} />
                   <Route path="edit/:id" element={<EditProduct />} />
+                </Route>
+                <Route path="users">
+                  <Route index element={<ListUsers />} />
+                  <Route path=":id" element={<UserDetailed />} />
+                  <Route path="new" element={<CreateUser />} />
+                  <Route path="edit/:id" element={<EditUser />} />
                 </Route>
                 <Route path="/blog" element={<GenerateBlogPost />} />
                 <Route path="/ask" element={<Ask />} />

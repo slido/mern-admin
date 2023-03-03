@@ -22,7 +22,7 @@ app.use('/', authJwt.verifyToken);
 // Already signed up user routes
 app.use('/user', require('./user'))
 app.use('/products', require('./products'))
-
+app.use('/users', require('./users'))
 // Using AI Platform
 app.use('/ai', require('./ai'))
 

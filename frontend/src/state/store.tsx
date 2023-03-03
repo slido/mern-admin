@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import userReducer from "../components/auth/AuthSlice";
+import usersReducer from "../pages/users/usersSlice";
 import snackBarReducer from "../components/SnackBar/SnackBarSlice";
 import productsReducer from "../pages/products/productsSlice";
 import {
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   snackBar: snackBarReducer,
   products: productsReducer,
+  users: usersReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

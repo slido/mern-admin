@@ -43,7 +43,6 @@ export const registerUserAction = createAsyncThunk<IReturn, Object>(
     async (data, thunkAPI) => {
         try {
             const response = await  authApi.post("/auth/signup", data);
-
             return response.data;
         } catch (error:any) {
             const snackData = {
