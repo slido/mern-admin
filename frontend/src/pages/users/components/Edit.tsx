@@ -11,11 +11,12 @@ const EditUser: FC = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<IUser>(singleUser);
   const { loading } = useAppSelector((state) => state.products);
+  const [duplicateErrors, setDuplicateErrors] = useState("");
 
   useEffect(() => {
     dispatch(getUserById(id!));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, dispatch]);
+  }, [id]);
 
   useEffect(() => {
     setUser(singleUser);
@@ -23,7 +24,7 @@ const EditUser: FC = () => {
 
   const handleSubmit = (e: IUser) => {
     const newUser: IUser = {
-      _id: e._id,
+      _id: id,
       fname: e.fname,
       lname: e.lname,
       address: e.address,
@@ -31,14 +32,22 @@ const EditUser: FC = () => {
       accountType: e.accountType,
       status: e.status,
     };
-
-    dispatch(updateUser(newUser));
-    setUser({});
-    navigate("/users");
+    try {
+      dispatch(updateUser(newUser));
+      console.log("dispachao update");
+      //setUser({});
+      //navigate("/users");
+    } catch (error: any) {
+      setDuplicateErrors("Email address already exists");
+      console.error("erroooor:", error);
+    }
   };
 
   return (
-    <UserForm onSubmit={handleSubmit} initialValues={user} isEdit={true} />
+    <>
+      <UserForm onSubmit={handleSubmit} initialValues={user} isEdit={true} />
+      {duplicateErrors && <div>{duplicateErrors}</div>}
+    </>
   );
 };
 

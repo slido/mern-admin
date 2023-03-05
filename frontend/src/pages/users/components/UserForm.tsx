@@ -61,6 +61,7 @@ const UserForm: FC<IUserFormPrompts> = ({
         <div className="left">
           {!loading && (
             <Formik
+              key={initialValues._id}
               initialValues={initialValues}
               onSubmit={handleSubmit}
               validationSchema={validationSchema}
@@ -69,25 +70,29 @@ const UserForm: FC<IUserFormPrompts> = ({
             >
               {({ errors, touched, setFieldValue }) => (
                 <Form>
-                  <FormControl className="fItem">
-                    <Field
-                      as={TextField}
-                      name="email"
-                      value={selectedUser.email}
-                      fullWidth
-                      label="E-mail"
-                      className="formInput"
-                      error={!!errors.email}
-                      onChange={(e: any) => {
-                        setFieldValue("email", e.target.value);
-                        setSelectedUser({
-                          ...selectedUser,
-                          email: e.target.value,
-                        });
-                      }}
-                    />
-                    {!!errors.email ? <div>{errors.email}</div> : null}
-                  </FormControl>
+                  {
+                    //!isEdit ? (
+                    <FormControl className="fItem">
+                      <Field
+                        as={TextField}
+                        name="email"
+                        value={selectedUser.email}
+                        fullWidth
+                        label="E-mail"
+                        className="formInput"
+                        error={!!errors.email}
+                        onChange={(e: any) => {
+                          setFieldValue("email", e.target.value);
+                          setSelectedUser({
+                            ...selectedUser,
+                            email: e.target.value,
+                          });
+                        }}
+                      />
+                      {!!errors.email ? <div>{errors.email}</div> : null}
+                    </FormControl>
+                    // ) : null
+                  }
                   <FormControl className="fItem">
                     <Field
                       as={TextField}
@@ -127,31 +132,28 @@ const UserForm: FC<IUserFormPrompts> = ({
                     {!!errors.lname ? <div>{errors.lname}</div> : null}
                   </FormControl>
 
-                  {!isEdit ? (
-                    <>
-                      <FormControl className="fItem">
-                        <Field
-                          as={TextField}
-                          name="password"
-                          value={selectedUser.password}
-                          fullWidth
-                          label="Password"
-                          className="formInput"
-                          error={!!errors.password}
-                          onChange={(e: any) => {
-                            setFieldValue("password", e.target.value);
-                            setSelectedUser({
-                              ...selectedUser,
-                              password: e.target.value,
-                            });
-                          }}
-                        />
-                        {!!errors.password ? (
-                          <div>{errors.password}</div>
-                        ) : null}
-                      </FormControl>
-                    </>
-                  ) : null}
+                  <>
+                    <FormControl className="fItem">
+                      <Field
+                        as={TextField}
+                        name="password"
+                        value={selectedUser.password}
+                        fullWidth
+                        type="password"
+                        label="Password"
+                        className="formInput"
+                        error={!!errors.password}
+                        onChange={(e: any) => {
+                          setFieldValue("password", e.target.value);
+                          setSelectedUser({
+                            ...selectedUser,
+                            password: e.target.value,
+                          });
+                        }}
+                      />
+                      {!!errors.password ? <div>{errors.password}</div> : null}
+                    </FormControl>
+                  </>
 
                   <FormControl className="fItem">
                     <Button

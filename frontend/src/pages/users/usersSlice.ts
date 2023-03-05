@@ -145,6 +145,26 @@ export const usersSlice = createSlice({
                 singleUser: action.payload,
             }
         });
+
+        builder.addCase(updateUser.rejected, (state, action: PayloadAction<any>) =>
+        {
+            console.log("action.payload",action.payload)
+            if (action.payload.response.status === 409)
+            {
+                return {
+                    ...state,
+                    errors: action.payload,
+                    loading: false
+                }
+            } else  if (action.payload.response.status === 500)
+            { 
+                return {
+                    ...state,
+                    errors: action.payload,
+                    loading: false
+                }
+            }
+        });
     }
 })
 

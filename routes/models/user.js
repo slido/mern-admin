@@ -43,17 +43,7 @@ const UserSchema = new Schema({
 		default: ((Date.now() / 1000) + (7 * 24 * 60 * 60) ), 
 		set: d => new Date(d * 1000) },
 	cancel_at_period_end: { type: Boolean, default: false },
-	referralId: {
-		type: String,
-		unique: true,
-		maxLength: 100,
-		default: v4(),
-	},
-	referrerPaid: { type: Boolean, default: false }, // has the referral been given credits yet?
-	referrer: {
-		type: ObjectId,
-		ref: "user",
-	},
+	
 });
 
 UserSchema.methods.comparePassword = function(password) {
