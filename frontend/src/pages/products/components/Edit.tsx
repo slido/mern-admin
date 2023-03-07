@@ -15,28 +15,27 @@ const EditProduct: FC = () => {
   useEffect(() => {
     dispatch(getProductById(id!));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, dispatch]);
+  }, [id]);
 
   useEffect(() => {
     setProduct(singleProduct);
   }, [singleProduct]);
 
   const handleSubmit = (e: Product) => {
-    let data = {
+    const editedProduct: Product = {
+      _id: id,
       title: e.title,
       description: e.description,
       status: e.status,
-      _id: e._id,
     };
-
-    dispatch(updateProduct(data));
-    setProduct({
-      title: "",
-      description: "",
-      status: "",
-      categories: [],
-    });
-    navigate("/products");
+    try {
+      dispatch(updateProduct(editedProduct));
+      setProduct({});
+      navigate("/products");
+    } catch (error: any) {
+      //setDuplicateErrors("Email address already exists");
+      console.error("erroooor:", error);
+    }
   };
 
   return (

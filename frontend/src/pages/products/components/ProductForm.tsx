@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../state/store";
 import { Product } from "../productsSlice";
 import "./productform.scss";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 
 interface IProductFormPrompts {
   initialValues: Product;
@@ -18,22 +20,31 @@ interface IProductFormPrompts {
   isEdit: boolean;
 }
 
+const validationSchema = Yup.object().shape({
+  title: Yup.string().required("Title is required"),
+  description: Yup.string().required("Product description is required"),
+  status: Yup.string().required("Status is required"),
+});
+
 const ProductForm: FC<IProductFormPrompts> = ({
   initialValues,
   onSubmit,
   isEdit,
 }) => {
-  const [selectedProduct, setSelectedproduct] =
+  const [selectedProduct, setSelectedProduct] =
     useState<Product>(initialValues);
   const { loading } = useAppSelector((state) => state.products);
   const navigate = useNavigate();
-  const handleSubmit = (e: any) => {
-    onSubmit(selectedProduct);
+
+  const handleSubmit = (values: Product, { setSubmitting }: any) => {
+    console.log("values:", values);
+    console.log("selectedProduct:", selectedProduct);
+    onSubmit(values);
+    setSubmitting(false);
   };
 
-  // add this line
   useEffect(() => {
-    setSelectedproduct(initialValues);
+    setSelectedProduct(initialValues);
   }, [initialValues]);
 
   return (
@@ -56,71 +67,95 @@ const ProductForm: FC<IProductFormPrompts> = ({
       <div className="bottom">
         <div className="left">
           {!loading && (
-            <form onSubmit={handleSubmit}>
-              <FormControl className="fItem">
-                <TextField
-                  onChange={(e) =>
-                    setSelectedproduct({
-                      ...selectedProduct,
-                      title: e.target.value,
-                    })
-                  }
-                  name="title"
-                  value={selectedProduct?.title}
-                  fullWidth
-                  label="Title"
-                  className="formInput"
-                />
-              </FormControl>
-              <FormControl className="fItem">
-                <TextField
-                  name="description"
-                  multiline
-                  onChange={(e) =>
-                    setSelectedproduct({
-                      ...selectedProduct,
-                      description: e.target.value,
-                    })
-                  }
-                  value={selectedProduct?.description}
-                  fullWidth
-                  label="Description"
-                  rows={4}
-                />
-              </FormControl>
-              <FormControl className="fItem">
-                <InputLabel id="demo-simple-select-helper-label">
-                  Status
-                </InputLabel>
-                <Select
-                  name="status"
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={selectedProduct?.status}
-                  label="Status"
-                  onChange={(e) =>
-                    setSelectedproduct({
-                      ...selectedProduct,
-                      status: e.target.value,
-                    })
-                  }
-                >
-                  <MenuItem value="awailable">Awailable</MenuItem>
-                  <MenuItem value="notAwailable">Not Awailable</MenuItem>
-                  <MenuItem value="ariving">Ariving</MenuItem>
-                </Select>
-              </FormControl>
-              <FormControl className="fItem">
-                <Button
-                  fullWidth
-                  variant="contained"
-                  disableElevation
-                  onClick={handleSubmit}
-                >
-                  {isEdit ? "Save" : "Create"}
-                </Button>
-              </FormControl>
-            </form>
+            <Formik
+              key={initialValues._id}
+              initialValues={initialValues}
+              onSubmit={handleSubmit}
+              validationSchema={validationSchema}
+              validateOnChange={true}
+              validateOnBlur={true}
+            >
+              {({ errors, setFieldValue }) => (
+                <Form>
+                  <FormControl className="fItem">
+                    <Field
+                      as={TextField}
+                      error={!!errors.title}
+                      name="title"
+                      value={selectedProduct.title}
+                      fullWidth
+                      label="Title"
+                      className="formInput"
+                      onChange={(e: any) => {
+                        setFieldValue("title", e.target.value);
+                        setSelectedProduct({
+                          ...selectedProduct,
+                          title: e.target.value,
+                        });
+                      }}
+                    />
+                    {!!errors.title ? <div>{errors.title}</div> : null}
+                  </FormControl>
+                  <FormControl className="fItem">
+                    <Field
+                      as={TextField}
+                      name="description"
+                      multiline
+                      error={!!errors.description}
+                      value={selectedProduct?.description}
+                      fullWidth
+                      label="Description"
+                      rows={4}
+                      onChange={(e: any) => {
+                        setFieldValue("description", e.target.value);
+                        setSelectedProduct({
+                          ...selectedProduct,
+                          description: e.target.value,
+                        });
+                      }}
+                    />
+                    {!!errors.description ? (
+                      <div>{errors.description}</div>
+                    ) : null}
+                  </FormControl>
+                  <FormControl className="fItem">
+                    <InputLabel id="demo-simple-select-helper-label">
+                      Status
+                    </InputLabel>
+                    <Select
+                      name="status"
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={selectedProduct?.status}
+                      label="Status"
+                      error={!!errors.status}
+                      onChange={(e) => {
+                        setFieldValue("status", e.target.value);
+                        setSelectedProduct({
+                          ...selectedProduct,
+                          status: e.target.value,
+                        });
+                      }}
+                    >
+                      <MenuItem value="awailable">Awailable</MenuItem>
+                      <MenuItem value="notAwailable">Not Awailable</MenuItem>
+                      <MenuItem value="ariving">Ariving</MenuItem>
+                    </Select>
+                    {!!errors.status ? <div>{errors.status}</div> : null}
+                  </FormControl>
+                  <FormControl className="fItem">
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      disableElevation
+                      type="submit"
+                    >
+                      {isEdit ? "Save" : "Create"}
+                    </Button>
+                  </FormControl>
+                </Form>
+              )}
+            </Formik>
           )}
         </div>
         {/* <div className="right"></div> */}

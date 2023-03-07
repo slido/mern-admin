@@ -9,21 +9,28 @@ const CreateProduct: FC = () => {
   const dispatch = useAppDispatch();
 
   const handleSubmit = (e: Product) => {
-    let data = {
-      title: e.title,
-      description: e.description,
-      status: e.status,
-    };
-    dispatch(createProduct(data));
-    navigate("/products");
+    try {
+      const newProduct: Product = {
+        title: e.title,
+        description: e.description,
+        status: e.status,
+      };
+      dispatch(createProduct(newProduct));
+      navigate("/products");
+    } catch (error: any) {
+      if (error.response && error.response.status === 409) {
+        // Handle duplicate email error
+        console.error(error);
+        //setDuplicateErrors("Email address already exists");
+      } else {
+        // Handle other errors
+        console.error(error);
+        //setDuplicateErrors(error);
+      }
+    }
   };
 
-  const [product, setProduct] = useState({
-    title: "",
-    description: "",
-    status: "",
-    categories: [],
-  });
+  const [product, setProduct] = useState({});
 
   return (
     <ProductForm

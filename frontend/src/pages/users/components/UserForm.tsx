@@ -68,7 +68,7 @@ const UserForm: FC<IUserFormPrompts> = ({
               validateOnChange={true}
               validateOnBlur={true}
             >
-              {({ errors, touched, setFieldValue }) => (
+              {({ errors, setFieldValue }) => (
                 <Form>
                   {
                     //!isEdit ? (
