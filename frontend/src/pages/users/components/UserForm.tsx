@@ -32,8 +32,6 @@ const UserForm: FC<IUserFormPrompts> = ({
   const navigate = useNavigate();
 
   const handleSubmit = (values: IUser, { setSubmitting }: any) => {
-    console.log("values:", values);
-    console.log("selectedUser:", selectedUser);
     onSubmit(values);
     setSubmitting(false);
   };

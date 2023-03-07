@@ -17,7 +17,7 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import "./App.scss";
 import GenerateBlogPost from "./pages/generateBlogPost/GenerateBlogPost";
 import { useAppDispatch } from "./state/store";
-import { getUser, logoutUser } from "./components/auth/AuthSlice";
+import { logoutUser } from "./components/auth/AuthSlice";
 import SnackBar from "./components/SnackBar/SnackBar";
 import CreateProduct from "./pages/products/components/Create";
 import EditProduct from "./pages/products/components/Edit";
@@ -28,22 +28,14 @@ import CreateUser from "./pages/users/components/Create";
 import EditUser from "./pages/users/components/Edit";
 import ProductDetailed from "./pages/products/components/ProductDetailed/ProductDetailed";
 import UserDetailed from "./pages/users/components/UserDetailed/UserDetailed";
+import Profile from "./pages/profile/Profile";
 
 const App: FC = () => {
   const dispatch = useAppDispatch();
-
-  const initApp = useCallback(async () => {
-    await dispatch(getUser());
-  }, [dispatch]);
-
   const Logout = () => {
     dispatch(logoutUser());
     return <Navigate to="/login" />;
   };
-
-  useEffect(() => {
-    initApp();
-  }, []);
 
   return (
     <>
@@ -70,6 +62,7 @@ const App: FC = () => {
                 <Route path="/blog" element={<GenerateBlogPost />} />
                 <Route path="/ask" element={<Ask />} />
                 <Route path="/jobad" element={<JobAd />} />
+                <Route path="/profile" element={<Profile />} />
               </Route>
             </Route>
             <Route path="/login" element={<LoginForm />} />

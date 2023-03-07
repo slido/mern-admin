@@ -37,8 +37,6 @@ const ProductForm: FC<IProductFormPrompts> = ({
   const navigate = useNavigate();
 
   const handleSubmit = (values: Product, { setSubmitting }: any) => {
-    console.log("values:", values);
-    console.log("selectedProduct:", selectedProduct);
     onSubmit(values);
     setSubmitting(false);
   };

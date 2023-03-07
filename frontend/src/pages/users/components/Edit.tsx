@@ -34,8 +34,7 @@ const EditUser: FC = () => {
     };
     try {
       dispatch(updateUser(newUser));
-      console.log("dispachao update");
-      setUser({});
+      setUser(newUser);
       navigate("/users");
     } catch (error: any) {
       setDuplicateErrors("Email address already exists");
